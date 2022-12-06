@@ -1,8 +1,27 @@
-﻿namespace Costea_Maria_Lab7;
+﻿using System;
+using Costea_Maria_Lab7.Data;
+using System.IO;
+
+namespace Costea_Maria_Lab7;
 
 public partial class App : Application
 {
-	public App()
+
+    static ShoppingListDatabase database;
+    public static ShoppingListDatabase Database
+    {
+        get
+        {
+            if (database == null)
+            {
+                database = new
+               ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+               LocalApplicationData), "ShoppingList.db3"));
+            }
+            return database;
+        }
+    }
+    public App()
 	{
 		InitializeComponent();
 
