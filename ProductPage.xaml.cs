@@ -25,8 +25,7 @@ public partial class ProductPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var shopl = (ShopList)BindingContext;
-        listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+        listView.ItemsSource = await App.Database.GetProductsAsync();
     }
 
     async void OnAddButtonClicked(object sender, EventArgs e)

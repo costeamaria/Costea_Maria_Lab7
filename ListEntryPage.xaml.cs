@@ -11,7 +11,7 @@ public partial class ListEntryPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        
+        listView.ItemsSource = await App.Database.GetShopListsAsync();
     }
     async void OnShopListAddedClicked(object sender, EventArgs e)
     {
@@ -20,6 +20,7 @@ public partial class ListEntryPage : ContentPage
             BindingContext = new ShopList()
         });
     }
+
     async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         if (e.SelectedItem != null)
@@ -30,4 +31,5 @@ public partial class ListEntryPage : ContentPage
             });
         }
     }
+
 }
